@@ -13,26 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 生成深色模式蛇
-      - name: Generate Dark Snake
+      - name: Generate light + dark snake svg
         uses: Platane/snk@v3
         with:
           github_user_name: lifany-jia
-          outputs: snake-dark.svg
-          args: --palette github-dark
+          outputs: |
+            dist/github-snake-light.svg
+            dist/github-snake-dark.svg?palette=github-dark
 
-      # 生成浅色模式蛇
-      - name: Generate Light Snake
-        uses: Platane/snk@v3
+      - name: Push svg files to output branch
+        uses: crazy-max/ghaction-github-pages@v4
         with:
-          github_user_name: lifany-jia
-          outputs: snake-light.svg
-          args: --palette github-light
-
-      # 推送到 output 分支
-      - name: Push SVG to output branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: output
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
