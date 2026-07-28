@@ -4,8 +4,8 @@ What's up ✨ I'm lifany-jia
 
 ## 🐍 GitHub Contribution Snake
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/lifany-jia/lifany-jia/blob/output/snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/lifany-jia/lifany-jia/blob/output/snake-light.svg">
-  <img alt="contribution snake" src="https://github.com/lifany-jia/lifany-jia/blob/output/snake-dark.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-snake.vercel.app/api?username=lifany-jia&theme=github_dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-snake.vercel.app/api?username=lifany-jia&theme=github_light">
+  <img alt="snake" src="https://github-readme-snake.vercel.app/api?username=lifany-jia&theme=github_dark">
 </picture>
 
