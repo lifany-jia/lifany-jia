@@ -1,4 +1,4 @@
-name: Generate Contribution Snake
+name: Snake Contribution
 on:
   schedule:
     - cron: "0 */6 * * *"
@@ -8,20 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 关键！开启写入权限
+      contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Generate snake svg
+      - name: Generate Snake SVG
         uses: Platane/snk@v3
         with:
           github_user_name: lifany-jia
-          svg_out_path: github-contribution-grid-snake.svg
+          outputs: github-contribution-grid-snake.svg
 
-      - name: Commit & Push snake svg to output branch
-        uses: ad-m/github-push-action@master
+      - name: Push changes
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          branch: output
-          directory: .
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: output
