@@ -1,4 +1,4 @@
-name: Snake Contribution
+name: Generate Contribution Snake
 on:
   schedule:
     - cron: "0 */6 * * *"
@@ -10,16 +10,27 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate Snake SVG
+      # 生成深色模式蛇
+      - name: Generate Dark Snake
         uses: Platane/snk@v3
         with:
           github_user_name: lifany-jia
-          outputs: github-contribution-grid-snake.svg
+          outputs: snake-dark.svg
+          args: --palette github-dark
 
-      - name: Push changes
+      # 生成浅色模式蛇
+      - name: Generate Light Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: lifany-jia
+          outputs: snake-light.svg
+          args: --palette github-light
+
+      # 推送到 output 分支
+      - name: Push SVG to output branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
